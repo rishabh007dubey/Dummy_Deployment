@@ -40,6 +40,7 @@ export default function Home() {
       </div>
       <h1 className="text-4xl font-bold text-[teal] text-center">Hello Aqusag</h1>
       <h2 className="text-4xl font-bold text-[teal] text-center">Dummy Site for Build Deployment</h2>
+      <h1>RELOAD</h1>
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
