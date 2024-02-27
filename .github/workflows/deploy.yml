@@ -1,0 +1,31 @@
+name: Deploy
+
+# Trigger the workflow on push and
+# pull request events on the master branch
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Authenticate to the the server via ssh
+# and run our deployment script
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: 172.105.57.87
+          username: root
+          port: 3000
+          key: -----BEGIN OPENSSH PRIVATE KEY-----
+			b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+			QyNTUxOQAAACDGWRfD/PyWi5zfAbRmzODe6lokQpex2A4LxGm9noWlkAAAAKAJGhInCRoS
+			JwAAAAtzc2gtZWQyNTUxOQAAACDGWRfD/PyWi5zfAbRmzODe6lokQpex2A4LxGm9noWlkA
+			AAAECXLRdP9dNTv+O7iD7nzWSD7TDbUOo6FUwrmnVlWqRQS8ZZF8P8/JaLnN8BtGbM4N7q
+			WiRCl7HYDgvEab2ehaWQAAAAGXJpc2hhYmgwMDdkdWJleUBnbWFpbC5jb20BAgME
+-----END OPENSSH PRIVATE KEY-----
+          script: "cd /var/www/Dummy_Deployment/deployment_app && ./.scripts/deploy.sh"
