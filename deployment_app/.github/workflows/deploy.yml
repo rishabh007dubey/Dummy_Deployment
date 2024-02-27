@@ -4,9 +4,9 @@ name: Deploy
 # pull request events on the master branch
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 # Authenticate to the the server via ssh
 # and run our deployment script
@@ -18,8 +18,14 @@ jobs:
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          port: ${{ secrets.PORT }}
-          key: ${{ secrets.SSHKEY }}
+          host: 172.105.57.87
+          username: root
+          port: 3000
+          key: -----BEGIN OPENSSH PRIVATE KEY-----
+            b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+            QyNTUxOQAAACDGKoPfWxFtPiyhQNqZxD7i/pvTw8y8s3sdiY4+uAgDnAAAAKBF/VGzRf1R
+            swAAAAtzc2gtZWQyNTUxOQAAACDGKoPfWxFtPiyhQNqZxD7i/pvTw8y8s3sdiY4+uAgDnA
+            AAAEAB0NACR7S/65snaS/w8hftBQxnu5l/wX5HpTCWEVHBscYqg99bEW0+LKFA2pnEPuL+
+            m9PDzLyzex2Jjj64CAOcAAAAGXJpc2hhYmgwMDdkdWJleUBnbWFpbC5jb20BAgME
+            -----END OPENSSH PRIVATE KEY-----            
           script: "cd /var/www/Dummy_Deployment/deployment_app && ./.scripts/deploy.sh"
