@@ -19,14 +19,12 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: 172.105.57.87
-          username: "root"
+          username: root
           port: 3000
-          key: -----BEGIN OPENSSH PRIVATE KEY-----
-            b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+          key: b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
             QyNTUxOQAAACDGKoPfWxFtPiyhQNqZxD7i/pvTw8y8s3sdiY4+uAgDnAAAAKBF/VGzRf1R
             swAAAAtzc2gtZWQyNTUxOQAAACDGKoPfWxFtPiyhQNqZxD7i/pvTw8y8s3sdiY4+uAgDnA
             AAAEAB0NACR7S/65snaS/w8hftBQxnu5l/wX5HpTCWEVHBscYqg99bEW0+LKFA2pnEPuL+
-            m9PDzLyzex2Jjj64CAOcAAAAGXJpc2hhYmgwMDdkdWJleUBnbWFpbC5jb20BAgME
-            -----END OPENSSH PRIVATE KEY-----            
+            m9PDzLyzex2Jjj64CAOcAAAAGXJpc2hhYmgwMDdkdWJleUBnbWFpbC5jb20BAgME            
             
           script: "cd /var/www/Dummy_Deployment/deployment_app && ./.scripts/deploy.sh"
