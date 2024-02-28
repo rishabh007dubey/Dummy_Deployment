@@ -39,7 +39,7 @@ export default function Home() {
         />
       </div>
       <h1 className="text-4xl font-bold text-[teal] text-center">Hello Aqusag</h1>
-      <h2 className="text-4xl font-bold text-[teal] text-center">Dummy Site for Build Deployment Part 2</h2>
+      <h2 className="text-4xl font-bold text-[teal] text-center">Dummy Site for Build Deployment Part 3</h2>
       <h1>RELOAD 5</h1>
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
