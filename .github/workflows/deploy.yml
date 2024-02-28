@@ -20,6 +20,6 @@ jobs:
         with:
           host: 172.105.57.87
           username: root
-          port: 3000
+          port: 22
           key: ${{ secrets.SSHKEY }}
           script: "cd /var/www/Dummy_Deployment/deployment_app && ./.scripts/deploy.sh"
