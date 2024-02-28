@@ -21,9 +21,11 @@ jobs:
           host: 172.105.57.87
           username: root
           port: 22
-          key: b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-            QyNTUxOQAAACDGKoPfWxFtPiyhQNqZxD7i/pvTw8y8s3sdiY4+uAgDnAAAAKBF/VGzRf1R
-            swAAAAtzc2gtZWQyNTUxOQAAACDGKoPfWxFtPiyhQNqZxD7i/pvTw8y8s3sdiY4+uAgDnA
-            AAAEAB0NACR7S/65snaS/w8hftBQxnu5l/wX5HpTCWEVHBscYqg99bEW0+LKFA2pnEPuL+
-            m9PDzLyzex2Jjj64CAOcAAAAGXJpc2hhYmgwMDdkdWJleUBnbWFpbC5jb20BAgME
+          key: -----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+QyNTUxOQAAACDGWRfD/PyWi5zfAbRmzODe6lokQpex2A4LxGm9noWlkAAAAKAJGhInCRoS
+JwAAAAtzc2gtZWQyNTUxOQAAACDGWRfD/PyWi5zfAbRmzODe6lokQpex2A4LxGm9noWlkA
+AAAECXLRdP9dNTv+O7iD7nzWSD7TDbUOo6FUwrmnVlWqRQS8ZZF8P8/JaLnN8BtGbM4N7q
+WiRCl7HYDgvEab2ehaWQAAAAGXJpc2hhYmgwMDdkdWJleUBnbWFpbC5jb20BAgME
+-----END OPENSSH PRIVATE KEY-----
           script: "cd /var/www/Dummy_Deployment/deployment_app && ./.scripts/deploy.sh"
