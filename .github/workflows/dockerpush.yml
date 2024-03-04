@@ -17,7 +17,8 @@ jobs:
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: Build Docker image
-        run: docker build -t rishabh007dubey/test-docker-image-upload deployment_app/Dockerfile
+        run: docker build -t rishabh007dubey/test-docker-image-upload -f deployment_app/dockerfile .
+
 
       - name: Push Docker image
         run: docker push rishabh007dubey/test-docker-image-upload
