@@ -1,22 +1,8 @@
 FROM node:latest
 WORKDIR /src/app
-COPY package.json ./
+COPY package*.json ./
 RUN npm install
 COPY . . 
 RUN npm run build
 EXPOSE 3000
 CMD [ "npm", "start" ]
-
-#FROM nginx:alpine
-
-# Copy the built files from the previous stage
-#COPY --from=builder /app/.next /usr/share/nginx/html
-
-# Copy the Nginx configuration file
-#COPY deployment_app/nginx.conf /etc/nginx/nginx.conf
-
-# Expose port 80
-#EXPOSE 80
-
-# Start Nginx
-#CMD ["nginx", "-g", "daemon off;"]
