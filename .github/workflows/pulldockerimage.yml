@@ -16,7 +16,7 @@ jobs:
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: Pull Docker image
-        run: docker pull your-image-name
+        run: docker pull rishabh007dubey/test-docker-image-upload
 
       - name: SSH into server and deploy
         uses: appleboy/ssh-action@master
@@ -26,6 +26,6 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: 22
           script: |
-            docker stop your-container-name || true
-            docker rm your-container-name || true
-            docker run -d --name your-container-name -p 3003:3000 rishabh007dubey/test-docker-image-upload
+            docker stop 23a83f96c08e || true
+            docker rm 23a83f96c08e || true
+            docker run -d --name 23a83f96c08e -p 3003:3000 rishabh007dubey/test-docker-image-upload
