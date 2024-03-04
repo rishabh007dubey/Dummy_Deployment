@@ -14,4 +14,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build Docker image
-        run: docker build -t your-image-name -f Dummy_Deployment/deployment_app/Dockerfile Dummy_Deployment/deployment_app
+        run: docker build -t rishabh007dubey/test-docker-image-upload .
