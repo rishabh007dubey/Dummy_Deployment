@@ -21,10 +21,10 @@ jobs:
       - name: SSH into server and deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          host: 172.105.57.87
+          username: root
           port: 22
+          key: ${{ secrets.SSHKEY2 }}
           script: |
             docker stop 23a83f96c08e || true
             docker rm 23a83f96c08e || true
