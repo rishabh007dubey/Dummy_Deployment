@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,42 +22,14 @@ jobs:
       - name: Push Docker image to Docker Hub
         run: docker push rishabh007dubey/test-docker-image-upload:v4
 
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Log in to server via SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-name: Deploy
+          ssh-private-key: ${{ secrets.SSHKEY2 }}
 
-on:
-  push:
-    branches:
-      - main
+      - name: Pull Docker image on server
+        run: ssh -o StrictHostKeyChecking=no root@172.105.57.87 "docker pull rishabh007dubey/test-docker-image-upload:v4"
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Deploy Docker image on server
+        run: ssh -o StrictHostKeyChecking=no root@172.105.57.87 "docker run -d --name my-container -p 3003:3000 rishabh007dubey/test-docker-image-upload:v4"
 
-      - name: Login to Docker Hub
-        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-
-      - name: Pull Docker image
-        run: docker pull rishabh007dubey/test-docker-image-upload
-
-      - name: SSH into server and deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: 172.105.57.87
-          username: root
-          port: 22
-          key: ${{ secrets.SSHKEY2 }}
-          script: |
-            docker stop 23a83f96c08e || true
-            docker rm 23a83f96c08e || true
-            docker pull rishabh007dubey/test-docker-image-upload
-            docker run -d --name 23a83f96c08e -p 3003:3000 rishabh007dubey/test-docker-image-upload
