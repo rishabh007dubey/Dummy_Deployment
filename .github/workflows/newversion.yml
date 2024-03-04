@@ -31,10 +31,10 @@ jobs:
         with:
           host: 172.105.57.87
           username: root
-          key: ${{ secrets.SSHKEY2 }}
           port: 22
+          key: ${{ secrets.SSHKEY2 }}
           script: |
             docker pull rishabh007dubey/test-docker-image-upload:${{ env.IMAGE_TAG }}
-            docker stop your_container_name || true
-            docker rm your_container_name || true
-            docker run -d --name your_container_name -p 80:80 rishabh007dubey/test-docker-image-upload:${{ env.IMAGE_TAG }}
+            docker stop 23a83f96c08e || true
+            docker rm 23a83f96c08e || true
+            docker run -d --name 23a83f96c08e -p 3003:3000 rishabh007dubey/test-docker-image-upload:${{ env.IMAGE_TAG }}
