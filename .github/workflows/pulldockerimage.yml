@@ -28,4 +28,4 @@ jobs:
           script: |
             docker stop your-container-name || true
             docker rm your-container-name || true
-            docker run -d --name your-container-name -p 3003:3000 your-image-name
+            docker run -d --name your-container-name -p 3003:3000 rishabh007dubey/test-docker-image-upload
