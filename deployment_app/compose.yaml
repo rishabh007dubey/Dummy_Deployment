@@ -14,4 +14,4 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: your-image-name
+    image: rishabh007dubey/test-docker-image-upload
