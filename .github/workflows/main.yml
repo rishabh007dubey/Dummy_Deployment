@@ -11,16 +11,16 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Build Docker image
-        run: docker build -t your-docker-username/your-image-name:latest .
+        run: docker build -t rishabh007dubey/test-docker-image-upload:v4 .
 
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: Push Docker image to Docker Hub
-        run: docker push your-docker-username/your-image-name:latest
+        run: docker push rishabh007dubey/test-docker-image-upload:v4
 
   deploy:
     runs-on: ubuntu-latest
@@ -29,11 +29,35 @@ jobs:
       - name: Log in to server via SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.SSHKEY2 }}
-          ssh-known-hosts: ${{ secrets.HOSTS }}
+name: Deploy
 
-      - name: Pull Docker image on server
-        run: ssh username@hostname "docker pull your-docker-username/your-image-name:latest"
+on:
+  push:
+    branches:
+      - main
 
-      - name: Run Docker container on server
-        run: ssh username@hostname "docker run -d --name your-container-name -p 80:3000 your-docker-username/your-image-name:latest"
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Pull Docker image
+        run: docker pull rishabh007dubey/test-docker-image-upload
+
+      - name: SSH into server and deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: 172.105.57.87
+          username: root
+          port: 22
+          key: ${{ secrets.SSHKEY2 }}
+          script: |
+            docker stop 23a83f96c08e || true
+            docker rm 23a83f96c08e || true
+            docker pull rishabh007dubey/test-docker-image-upload
+            docker run -d --name 23a83f96c08e -p 3003:3000 rishabh007dubey/test-docker-image-upload
