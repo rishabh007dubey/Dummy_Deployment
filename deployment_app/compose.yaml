@@ -1,6 +1,17 @@
+# services:
+#   img:
+#     build: .
+#     container_name: basic-container
+#     ports: 
+#       - 3000:3000
+
+#
+
+version: '3.8'
+
 services:
-  img:
-    build: .
-    container_name: basic-container
-    ports: 
-      - 3000:3000
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: your-image-name
