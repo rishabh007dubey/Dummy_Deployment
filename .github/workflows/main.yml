@@ -29,8 +29,8 @@ jobs:
       - name: Log in to server via SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+          ssh-private-key: ${{ secrets.SSHKEY2 }}
+          ssh-known-hosts: ${{ secrets.HOSTS }}
 
       - name: Pull Docker image on server
         run: ssh username@hostname "docker pull your-docker-username/your-image-name:latest"
