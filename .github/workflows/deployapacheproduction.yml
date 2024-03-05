@@ -3,10 +3,11 @@ name: Deploy
 # Trigger the workflow on push and
 # pull request events on the master branch
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:  # This will trigger the workflow manually
+#  push:
+ #   branches: [main]
+  #pull_request:
+   # branches: [main]
 
 # Authenticate to the the server via ssh
 # and run our deployment script
