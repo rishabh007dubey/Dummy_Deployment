@@ -5,7 +5,7 @@ export default function Home() {
   const [counter, setCounter] = useState<number>(0);
   return (
     <div className="h-screen w-screen bg-[crimson] flex flex-col items-center justify-center">
-      <div className="p-5 min-w-[30%] bg-white shadow-sm rounded-lg">
+      <div className="p-5 min-w-[30%] bg-white shadow-sm rounded-lg flex flex-col items-center justify-center gap-3">
         <h1 className="text-center text-5xl font-[cursive] font-extrabold">Counter Here</h1>
         <h1 className="text-center text-4xl font-extrabold text-blue-800">{counter}</h1>
         <div>
