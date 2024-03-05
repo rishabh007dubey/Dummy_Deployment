@@ -1,6 +1,7 @@
 name: Docker Build and Push
 
 on:
+  workflow_dispatch: # This will trigger the workflow manually
   push:
     branches:
       - main
