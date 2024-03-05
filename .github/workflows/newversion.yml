@@ -35,6 +35,6 @@ jobs:
           key: ${{ secrets.SSHKEY2 }}
           script: |
             docker pull rishabh007dubey/test-docker-image-upload:${{ env.IMAGE_TAG }}
-            docker stop 23a83f96c08e || true
-            docker rm 23a83f96c08e || true
-            docker run -d --name 23a83f96c08e -p 3003:3000 rishabh007dubey/test-docker-image-upload:${{ env.IMAGE_TAG }}
+            docker stop demo-app || true
+            docker rm demo-app || true
+            docker run -d --name demo-app -p 3003:3000 rishabh007dubey/test-docker-image-upload:${{ env.IMAGE_TAG }}
