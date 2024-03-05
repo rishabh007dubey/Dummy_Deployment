@@ -38,4 +38,4 @@ jobs:
             docker pull rishabh007dubey/test-docker-image-upload:${{ env.IMAGE_TAG }}
             docker stop demo-app || true
             docker rm demo-app || true
-            docker run -d --name demo-app -p 80:3000 rishabh007dubey/test-docker-image-upload:${{ env.IMAGE_TAG }}
+            docker run -d --name demo-app -p 3007:3000 rishabh007dubey/test-docker-image-upload:${{ env.IMAGE_TAG }}
