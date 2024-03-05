@@ -30,7 +30,8 @@ EXPOSE 80
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Start NGINX and your Node.js application
-CMD service nginx start && npm start
+CMD nginx -g "daemon off;" & npm start
+
 
 
 
